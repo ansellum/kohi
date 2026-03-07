@@ -1,2 +1,2 @@
-# kafei
-Self-hosted coffee tracking app built using Rust
+# kohi
+A self-hosted coffee tracking app built using Rust
