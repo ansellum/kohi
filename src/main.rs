@@ -1,7 +1,9 @@
+use std::env;
+
 pub mod bean;
 
 fn main() {
-    println!("Hello, world!");
+    let args: Vec<String> = env::args().collect();
 
     // TODO:
     // - Read Ch 9 -> Ch 12 of The Rust Programming Language book
