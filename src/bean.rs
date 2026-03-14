@@ -6,18 +6,26 @@ enum RoastLevel {
     Dark,
 }
 
+pub struct Origin {
+    name: String,
+    region: Vec<String>,
+    farm: Option<String>,
+    producer: Option<String>,
+    varietal: Vec<String>,
+    altitude: Option<String>,
+}
+
 pub struct Bean {
     purchase_date: Timestamp,
+    roast_date: Timestamp,
     purchase_link: String,
-    name: String,
-    origin: Option<String>,
-    process: Option<String>,
     roaster: String,
+    name: String,
+
+    origin: Origin,
     roast_level: RoastLevel,
-    roast_date: Option<Timestamp>,
+    tasting_notes: Vec<String>,
+
+    weight: u16,
+    price: u16, //in pennies
 }
-
-pub fn create_bean(name: String, origin: Option<String>, ) {
-
-}
-
