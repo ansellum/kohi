@@ -17,8 +17,14 @@ enum Modes {
     Bag(BagArgs),
     Coffee(CoffeeArgs),
     Brew(BrewArgs),
+    Import {
+        file: String,
+    }
 }
 
+/////////////////////
+// WIZARD COMMANDS //
+/////////////////////
 #[derive(Args)]
 #[command(args_conflicts_with_subcommands = true)]
 #[command(flatten_help = true)]
@@ -83,6 +89,8 @@ fn main() {
     let args = Cli::parse();
 
     match args.command {
+
+        // WIZARD
         Modes::Equipment(equipment) => {
             match equipment.command {
                 EquipmentCommands::Add => println!("kaffe equipment add"),
@@ -111,5 +119,11 @@ fn main() {
                 BrewCommands::List => println!("kaffe brew list"),
             }
         }
+
+        // MAIN
+        Modes::Import { file } => {
+
+        }
     }
 }
+
