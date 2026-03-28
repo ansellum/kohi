@@ -1,4 +1,5 @@
 use clap::{Args, Parser, Subcommand};
+use rusqlite::{Connection, Result};
 
 //pub mod bean;
 pub mod equipment;
@@ -17,8 +18,14 @@ enum Modes {
     Bag(BagArgs),
     Coffee(CoffeeArgs),
     Brew(BrewArgs),
+    Import {
+        file: String,
+    }
 }
 
+/////////////////////
+// WIZARD COMMANDS //
+/////////////////////
 #[derive(Args)]
 #[command(args_conflicts_with_subcommands = true)]
 #[command(flatten_help = true)]
@@ -79,10 +86,18 @@ enum BrewCommands {
     List,
 }
 
-fn main() {
+
+/////////////////////
+// IMPORT COMMANDS //
+/////////////////////
+
+fn main() -> Result<()> {
+    // Initialization
     let args = Cli::parse();
+    let conn = Connection::open_in_memory()?;
 
     match args.command {
+        // WIZARD
         Modes::Equipment(equipment) => {
             match equipment.command {
                 EquipmentCommands::Add => println!("kaffe equipment add"),
@@ -111,5 +126,13 @@ fn main() {
                 BrewCommands::List => println!("kaffe brew list"),
             }
         }
+
+        // MAIN
+        Modes::Import { file } => {
+
+        }
     }
+
+    Ok(())
 }
+
