@@ -1,7 +1,7 @@
 use jiff::Timestamp;
-use serde::{Serialize, Deserialize};
+use serde::Deserialize;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Bag {
     id: u32,
     coffee_id: u32,

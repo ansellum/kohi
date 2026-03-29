@@ -1,19 +1,20 @@
 use jiff::Timestamp;
-use serde::{Serialize, Deserialize};
-#[derive(Serialize, Deserialize)]
+use serde::Deserialize;
+
+#[derive(Debug, Deserialize)]
 enum CoffeeType {
     SingleOrigin,
     Blend
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 enum RoastLevel {
     Light,
     Medium,
     Dark,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Coffee {
     id: u32,
     timestamp: Timestamp,
