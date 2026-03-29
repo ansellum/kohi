@@ -98,19 +98,21 @@ enum BrewCommands {
 // IMPORT COMMANDS //
 /////////////////////
 
+// Opening a file in std::File https://doc.rust-lang.org/std/fs/struct.File.html
 // fn open_file<P: AsRef<Path>>(path: P) -> Result<> {
 //     let file = File::open(path)?;
 //     let mut buf_reader = BufReader::new(file);
 //     let mut contents = String::new();
 //     buf_reader.read_to_string(&mut contents)?;
 //     Ok(())
-
+//
 // }
 
+// Example from serde_json https://docs.rs/serde_json/latest/serde_json/de/fn.from_reader.html
 // fn read_data_from_file<P: AsRef<Path>, T>(path: P) -> Result<Vec<T>, Box<dyn Error>> {
 //     let file = File::open(path)?;
 //     let reader = BufReader::new(file);
-
+//
 // }
 
 
