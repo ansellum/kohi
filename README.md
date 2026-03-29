@@ -7,7 +7,8 @@ A self-hosted coffee tracking app built using Rust
 - [x] Figure out help message behavior
 - [x] Figure out ID system 
     - Will use SQLite database tags
-- [ ] Improve error handing (.expect(), panic!)
+- [ ] Improve error handing
+    - Marked in-line
 - [ ] Save temporary structs of each data type
     - Equipment is in json form
     - Bag and Coffee are in csv form
