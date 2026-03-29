@@ -1,11 +1,8 @@
 use clap::{Args, Parser, Subcommand};
-use rusqlite::{Connection, Result};
 use std::error::Error;
-use std::fs::File;
-// use std::io::BufReader;
-// use std::path::Path;
+use std::path::Path;
+use std::ffi::OsStr;
 
-//pub mod bean;
 pub mod equipment;
 pub mod bag;
 pub mod coffee;
@@ -26,7 +23,7 @@ enum Modes {
     Coffee(CoffeeArgs),
     Brew(BrewArgs),
     Import {
-        path: String,
+        file: String,
     }
 }
 
@@ -98,28 +95,15 @@ enum BrewCommands {
 // IMPORT COMMANDS //
 /////////////////////
 
-// Opening a file in std::File https://doc.rust-lang.org/std/fs/struct.File.html
-// fn open_file<P: AsRef<Path>>(path: P) -> Result<> {
-//     let file = File::open(path)?;
-//     let mut buf_reader = BufReader::new(file);
-//     let mut contents = String::new();
-//     buf_reader.read_to_string(&mut contents)?;
-//     Ok(())
-//
-// }
-
-// Example from serde_json https://docs.rs/serde_json/latest/serde_json/de/fn.from_reader.html
-// fn read_data_from_file<P: AsRef<Path>, T>(path: P) -> Result<Vec<T>, Box<dyn Error>> {
-//     let file = File::open(path)?;
-//     let reader = BufReader::new(file);
-//
-// }
-
+fn get_extension_from_filename(filename: &str) -> Option<&str>  {
+    Path::new(filename)
+        .extension()
+        .and_then(OsStr::to_str)
+}
 
 fn main() -> Result<(), Box<dyn Error>> {
     // Initialization
     let args = Cli::parse();
-    let conn = Connection::open_in_memory()?;
 
     match args.command {
         // WIZARD
@@ -153,17 +137,27 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
 
         // MAIN
-        Modes::Import { path } => {
-            let message = File::open(path)?;
-            //println!("{}", message);
+        Modes::Import { file } => {
+            // match get_extension_from_filename(&path) {
+            //     None => panic!("Invalid file type. File must be either CSV or JSON"),
+            //     Some(extension) => {
+            //         match extension {
+            //             _ => panic!("Invalid file type. File must be either CSV or JSON"),
+            //             "json" => println!("json"),
+            //             "csv" => println!("json"),
+            //         }
+            //     }
+            // }
 
-            /* TODO:
-             * - Figure out how to parse between json and csv
-             * - Save temporary structs of each data type
-             *   - Equipment is in json form
-             *   - Bag and Coffee are in csv form
-             */
+            let extension = get_extension_from_filename(&file)
+                .expect("Invalid file type. Please use a JSON or CSV.");
             
+            match extension {
+                "json" => println!("json"),
+                "csv" => println!("csv"),
+                _ => panic!("invalid type")
+            }
+         
         }
     }
 
