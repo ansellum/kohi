@@ -154,6 +154,14 @@ fn main() -> Result<(), Box<dyn Error>> {
         Modes::Import { path } => {
             let message = File::open(path)?;
             //println!("{}", message);
+
+            /* TODO:
+             * - Figure out how to parse between json and csv
+             * - Save temporary structs of each data type
+             *   - Equipment is in json form
+             *   - Bag and Coffee are in csv form
+             */
+            
         }
     }
 
