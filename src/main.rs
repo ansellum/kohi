@@ -127,15 +127,12 @@ fn import_from_file(path: &str) -> Result<(), Box<dyn Error>> { /* Generic Box<d
             }
             for coffee in j.coffee {
                 dbg!(coffee);
-                // TODO: Now that equipment is serialized, put into SQLite db!
             }
             for bag in j.bag {
                 dbg!(bag);
-                // TODO: Now that equipment is serialized, put into SQLite db!
             }
             for brew in j.brew {
                 dbg!(brew);
-                // TODO: Now that equipment is serialized, put into SQLite db!
             }
         }
         "csv" => {
@@ -151,6 +148,14 @@ fn import_from_file(path: &str) -> Result<(), Box<dyn Error>> { /* Generic Box<d
                 .expect("Failed to read line");
 
             println!("Importing {input}...");
+
+            match input.to_lowercase().as_str().trim() {
+                "equipment" => println!("equipment csv"),
+                "coffee" => println!("coffee csv"),
+                "bag" => println!("bag csv"),
+                "brew" => println!("brew csv"),
+                _ => panic!("wtf are you doing???")
+            }
 
             // for result in rdr.deserialize() {
             //     let record = result?;

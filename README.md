@@ -10,6 +10,6 @@ A self-hosted coffee tracking app built using Rust
 - [ ] Improve error handing
     - Marked in-line
 - [ ] Save temporary structs of each data type
-    - Equipment is in json form
-    - Bag and Coffee are in csv form
+    - [x] Equipment is in json form
+    - [ ] Bag and Coffee are in csv form
 - [ ] Begin wizard
