@@ -34,7 +34,7 @@ pub struct Coffee {
     altitude_m: Option<u16>,
     altitutde_lower_m: Option<u16>,
     altitutde_upper_m: Option<u16>,
-    process: String,
+    process: Option<String>,
     tasting_notes: Vec<String>,
     decaf: bool,
 }

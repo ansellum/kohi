@@ -17,5 +17,5 @@ pub struct Equipment {
     pub equipment_type: EquipmentType,
     pub purchase_date: Timestamp,
     pub decommission_date: Option<Timestamp>,
-    pub price_usdct: u32,
+    pub price_ct: u32,
 }
