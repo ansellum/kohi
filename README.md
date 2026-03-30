@@ -12,4 +12,5 @@ A self-hosted coffee tracking app built using Rust
 - [ ] Save temporary structs of each data type
     - [x] Equipment is in json form
     - [ ] Bag and Coffee are in csv form
+        - IDEA! Give structs w/ complex fields (e.g. Vec<>) a dedicated CSV constructor. CSV constructor can be another struct with String fields, wherein the String fields are constructed into vectors during runtime.
 - [ ] Begin wizard
