@@ -1,4 +1,4 @@
-ID,Coffee ID,Roast Date,Open Date,Empty Date,Weight (g),Price (US$)
+id,coffee_id,roast_date,open_date,empty_date,weight_g,price_ct
 1,1,2025-10-30,2025-10-30,,283,$18.00
 2,2,2025-10-30,2025-10-30,,283,$15.00
 3,3,2025-10-30,2025-10-30,,283,$13.00
